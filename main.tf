@@ -34,21 +34,28 @@ resource "aws_instance" "app_server" {
   #key_name        = aws_key_pair.deployer_key.key_name
   security_groups = [aws_security_group.app_sg.name]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo yum update -y
-              sudo amazon-linux-extras enable docker
-              sudo yum install -y docker
-              sudo service docker start
-              sudo usermod -aG docker ec2-user
-              sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-              sudo chmod +x /usr/local/bin/docker-compose
-              cd /home/ec2-user
-              git clone https://github.com/jorloque/mi-app-tf.git  # Clonar el código desde GitHub
-              cd mi-app-tf
-              docker build -t mi-aplicacion .
-              docker run -d -p 80:80 mi-aplicacion
-              EOF
+ user_data = <<-EOF
+            #!/bin/bash
+            sudo yum update -y
+            sudo amazon-linux-extras enable docker
+            sudo yum install -y docker git  # Instalamos Git junto con Docker
+            sudo service docker start
+            sudo usermod -aG docker ec2-user
+            
+            # Instalar Docker Compose
+            sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+            
+            # Clonar el repositorio de GitHub
+            cd /home/ec2-user
+            git clone https://github.com/jorloque/mi-app-tf.git
+            cd mi-app-tf
+            
+            # Construir y ejecutar el contenedor Docker
+            docker build -t mi-aplicacion .
+            docker run -d -p 80:80 mi-aplicacion
+            EOF
+
 
   tags = {
     Name = "AppServer"
