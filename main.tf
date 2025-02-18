@@ -29,7 +29,7 @@ resource "aws_security_group" "app_sg" {
 }
 
 resource "aws_instance" "app_server" {
-  ami             = "ami-0c55b159cbfafe1f0"  # AMI de Amazon Linux 2 (cambia segun la región)
+  ami             = "ami-053a45fff0a704a47"  # AMI de Amazon Linux 2 (cambia segun la región)
   instance_type   = "t2.micro"
   #key_name        = aws_key_pair.deployer_key.key_name
   security_groups = [aws_security_group.app_sg.name]
