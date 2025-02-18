@@ -4,13 +4,13 @@ provider "aws" {
 
 resource "aws_security_group" "app_sg" {
   name        = "app-security-group"
-  description = "Permite tráfico HTTP y SSH"
+  description = "Permite trafico HTTP y SSH"
 
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Permite acceso público al puerto 80
+    cidr_blocks = ["0.0.0.0/0"]  # Permite acceso publico al puerto 80
   }
 
   ingress {
@@ -29,7 +29,7 @@ resource "aws_security_group" "app_sg" {
 }
 
 resource "aws_instance" "app_server" {
-  ami             = "ami-0c55b159cbfafe1f0"  # AMI de Amazon Linux 2 (cambia según la región)
+  ami             = "ami-0c55b159cbfafe1f0"  # AMI de Amazon Linux 2 (cambia segun la región)
   instance_type   = "t2.micro"
   #key_name        = aws_key_pair.deployer_key.key_name
   security_groups = [aws_security_group.app_sg.name]
