@@ -44,8 +44,8 @@ resource "aws_instance" "app_server" {
               sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
               sudo chmod +x /usr/local/bin/docker-compose
               cd /home/ec2-user
-              git clone https://github.com/tuusuario/tu-repo.git  # Clonar el código desde GitHub
-              cd tu-repo
+              git clone https://github.com/jorloque/mi-app-tf.git  # Clonar el código desde GitHub
+              cd mi-app-tf
               docker build -t mi-aplicacion .
               docker run -d -p 80:80 mi-aplicacion
               EOF
