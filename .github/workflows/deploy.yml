@@ -27,3 +27,6 @@ jobs:
 
     - name: Aplicar Terraform
       run: terraform apply -auto-approve
+
+    - name: Say hello
+      run: echo "hola meloncetes"
