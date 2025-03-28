@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Say hello
+      run: echo "hola meloncetes"
+      
     - name: Checkout del código
       uses: actions/checkout@v3
 
@@ -28,5 +31,3 @@ jobs:
     - name: Aplicar Terraform
       run: terraform apply -auto-approve
 
-    - name: Say hello
-      run: echo "hola meloncetes"
