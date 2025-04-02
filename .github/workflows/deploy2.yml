@@ -3,13 +3,6 @@ name: "Terraform"
 on:
   workflow_dispatch:
     inputs:
-      # Working directory input from user.
-      resource:
-        type: choice
-        description: Choose the resource
-        options:
-        - dir1
-        - dir2
       # Terraform action you want to perform
       action:
         description: 'Terraform Action to Perform'
@@ -87,7 +80,7 @@ jobs:
 
       - name: AWS Plan Copy
         id: copyfrom
-        run: aws s3 cp s3://jlq-tf/terraform.tfstate terraform.tfstate 
+        run: aws s3 cp s3://${{ secrets.BUCKET}}/terraform.tfstate terraform.tfstate 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -104,7 +97,7 @@ jobs:
       
       - name: Delete plan file
         if: steps.destroy.outcome == 'success'
-        run: aws s3 rm s3://jlq-tf/terraform.tfstate 
+        run: aws s3 rm s3://${{ secrets.BUCKET}}/terraform.tfstate 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
