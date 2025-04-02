@@ -18,12 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
-      uses: actions/checkout@v3
-      
       - id: entorno
         uses: ./../.github/actions/reqs
-  
+      - name: Checkout
+        uses: actions/checkout@v3
+        
       - name: Aplicar Terraform
         run: terraform apply -auto-approve
       
