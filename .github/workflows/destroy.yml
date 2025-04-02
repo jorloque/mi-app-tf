@@ -26,7 +26,7 @@ jobs:
     - name: Inicializar Terraform
       run: terraform init
 
-    - name: Destruir infraestructura con Terraform
+    - name: Destrui infraestructura con Terraform
       run: terraform destroy -auto-approve
 
 
