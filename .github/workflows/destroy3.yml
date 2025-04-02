@@ -19,7 +19,7 @@ jobs:
     
     steps:
       - name: Configurar entorno con acción compuesta
-        uses: ./.github/workflows/reqs
+        uses: ./.github/actions/action.yml
   
       - name: Aplicar Terraform
         run: terraform apply -auto-approve
