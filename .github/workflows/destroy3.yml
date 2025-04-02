@@ -18,7 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - id: entorno
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: entorno
         uses: ./
   
       - name: Aplicar Terraform
