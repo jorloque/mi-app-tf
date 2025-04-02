@@ -19,10 +19,8 @@ jobs:
     
     steps:
       - id: entorno
-        uses: ./../.github/actions/reqs
-      - name: Checkout
-        uses: actions/checkout@v3
-        
+        uses: ./
+  
       - name: Aplicar Terraform
         run: terraform apply -auto-approve
       
