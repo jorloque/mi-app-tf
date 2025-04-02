@@ -79,6 +79,9 @@ jobs:
       - name: Inicializar Terraform
         run: terraform init
 
+      - name: Ver proveedores
+        run: terraform providers
+        
       - name: AWS Plan Copy
         id: copyfrom
         run: aws s3 cp s3://jlq-tf/terraform.tfstate terraform.tfstate 
