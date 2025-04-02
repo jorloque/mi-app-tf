@@ -19,7 +19,7 @@ jobs:
     
     steps:
       - id: entorno
-        uses: ./
+        uses: ../
   
       - name: Aplicar Terraform
         run: terraform apply -auto-approve
