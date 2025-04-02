@@ -49,20 +49,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - name: Configurar AWS CLI
-    
-        uses: aws-actions/configure-aws-credentials@v3
+      - name: entorno
+        uses: ./
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
-          aws-region: us-east-1
-
-      - name: Instalar Terraform
-        uses: hashicorp/setup-terraform@v2
-    
-      - name: Inicializar Terraform
-        run: terraform init
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
 
       - name: Ver proveedores
         run: terraform providers
