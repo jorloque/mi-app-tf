@@ -73,6 +73,12 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN}}
           aws-region: us-east-1
 
+      - name: Instalar Terraform
+        uses: hashicorp/setup-terraform@v2
+    
+      - name: Inicializar Terraform
+        run: terraform init
+
       - name: AWS Plan Copy
         id: copyfrom
         run: aws s3 cp s3://jlq-tf/terraform.tfstate terraform.tfstate 
