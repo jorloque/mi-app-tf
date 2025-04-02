@@ -1,5 +1,16 @@
 name: "Setup Environment"
 description: "Configura el entorno de trabajo"
+inputs:
+  aws_access_key_id:
+    description: "AWS Access Key"
+    required: true
+  aws_secret_access_key:
+    description: "AWS Secret Key"
+    required: true
+  aws_session_token:
+    description: "AWS Session Token"
+    required: true
+
 runs:
   using: "composite"
   steps:
