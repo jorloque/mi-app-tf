@@ -25,4 +25,5 @@ runs:
       uses: hashicorp/setup-terraform@v2
     - name: Inicializar Terraform
       run: terraform init
+      shell: bash
 
